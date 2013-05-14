@@ -226,7 +226,9 @@ header {
   position: relative;
 }
 @media (max-width: 768px) {
-  
+  #storypane {
+    width: 100%;
+  }
 }
 .noscroll {
   overflow: hidden;
