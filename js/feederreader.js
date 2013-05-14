@@ -12,6 +12,7 @@ $(document).ready(function() {
 		$("h1#feedtitle").text(msg.title);
 		
 		function LoadArticle(storypane, title, articleID) {
+			$(storypane).find("article").scrollTop(0);
 			$(storypane).find("article div").html(msg.item[articleID].description);
 			$(title).text(msg.item[articleID].title);
 			nextID = parseInt(articleID)+1;
@@ -19,8 +20,6 @@ $(document).ready(function() {
 			
 			if(articleID <= 0) { $(".icon-arrow-left").hide(); } else { $(".icon-arrow-left").show(); }
 			if(articleID >= 20) { $(".icon-arrow-right").hide(); } else { $(".icon-arrow-right").show(); }
-			
-			$('#storypane').scrollTop(0);
 			
 		}
 		// Go through the JSON feed, change 20 to however many items you want to show.
@@ -40,10 +39,12 @@ $(document).ready(function() {
 			$(storypane).show().animate({"top":0},300);
 			
 			$(storypane).find(".icon-chevron-down").on("click",function() {
+				$("article").scrollTop(0);
 				$(storypane).animate({"top":$(window).height()},200, function() {
 					$(this).hide();
 					//Make the body scrollable again. 
 					$("body").removeClass("noscroll");
+					
 				});
 			});
 			
@@ -61,6 +62,7 @@ $(document).ready(function() {
 		$("#storypane").css("top",$(window).height()).hide();
 	}
 	
+	// Fix the height of the scrollable parts.
 	$("ul#titlelist").height($(window).height() - 50);
 	$("article").height($(window).height() - 50);
 });
