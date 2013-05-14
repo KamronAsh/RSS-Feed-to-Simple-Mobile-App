@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>RSS Feed Reader</title>
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+
+<div class="listfeed">
+	<header>
+		<h1 id="feedtitle"></h1>
+	</header>
+	<ul id="titlelist">
+	</ul>
+</div>
+
+<div id="storypane">
+	<header>
+		<i class="icon-chevron-down"></i>
+		<i class="icon-arrow-right"></i>
+		<i class="icon-arrow-left"></i>	
+	</header>
+	<article>
+	<h1 id="storytitle"></h1>
+	<div>
+	</div>
+	</article>
+</div>
+
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	var rssfeed = "http://www.engadget.com/rss.xml";
+</script>
+<script src="js/feederreader.js"></script>
+</html>

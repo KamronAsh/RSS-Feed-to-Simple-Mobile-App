@@ -1,0 +1,175 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+@charset "UTF-8";
+/* CSS Document */
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} 
+/* End Reset */
+
+
+@mainColor: #ccc;
+@a: #fff;
+@backgroundColor: lighten(desaturate(@mainColor, 90%),55%);
+
+// Adjust the H1 color based on the main color.
+.mixin (@a) when (lightness(@mainColor) >= 50%) {
+	color: darken(@mainColor, 50%);
+}
+.mixin (@a) when (lightness(@mainColor) < 50%) {
+	color: lighten(@mainColor,50%);
+}
+
+.linkcolor (@a) when (lightness(@backgroundColor) >= 50%) {
+	color: darken(@mainColor, 25%);
+}
+.linkcolor (@a) when (lightness(@backgroundColor) < 50%) {
+	color: lighten(@mainColor,50%);
+}
+
+body { 
+	background-color: @backgroundColor;
+	font-family: 'Source Sans Pro', sans-serif;
+	overflow: hidden;
+}
+
+a {
+	.linkcolor(@mainColor);
+	text-decoration: none;
+}
+
+h1 {
+	padding: 12px;
+	font-size: 1.3em;
+	.mixin(@a);
+}
+header {
+	background-color: @mainColor;
+	max-height: 60px;
+	height:50px;
+	position: fixed;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	z-index: 2;
+	width:50%;
+	@media(max-width:768px) {
+		width: 100%;
+	}
+}
+.listfeed {
+
+	width:50%;
+	float: left;
+	
+	@media(max-width:768px) {
+		width: 100%;
+		float: none;
+	}
+}
+#titlelist {
+	position: relative;
+	z-index: 1;
+	top:50px;
+	bottom: 0;
+	overflow-x: auto;
+	li {
+		list-style: none;
+		padding: 20px 10px;
+		cursor: pointer;
+		border-bottom: solid 1px #ccc;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow: ellipsis;
+	}
+
+}
+#storypane {
+	position: fixed;
+	z-index: 3;
+	background-color:@backgroundColor;
+	overflow: hidden;
+	article {
+		line-height: 1.5em;
+		padding: 0 30px;
+		position: relative;
+		top:50px;
+		bottom: 0;
+		overflow-x: auto;
+		img {
+			max-width: 100%;
+		}
+		div {
+			padding-bottom: 30px;
+		}
+	}
+	i {
+		padding: 10px;
+		height: 100%;
+		.mixin(@a);
+	}
+	.icon-chevron-down {
+		float: left;
+		@media(min-width:767px) {
+			display: none;
+		}
+	}
+	.icon-arrow-right, .icon-arrow-left, {
+		float: right;
+		position: relative;
+	}
+	
+	width: 50%;
+	position: absolute;
+	top:0;
+	bottom:0;
+	right: 0;
+	@media(max-width:768px) {
+		
+	}
+}
+.noscroll {
+	overflow: hidden;
+	height: 100%;
+}
